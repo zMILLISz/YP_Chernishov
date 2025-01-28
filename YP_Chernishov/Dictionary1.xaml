@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="Button">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="13pt"/>
+        <Setter Property="Background" Value="#d1e7e0"/>
+        <Setter Property="Foreground" Value="#2b3d3e"/>
+        <Setter Property="BorderBrush" Value="#a8d8d5"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="13pt"/>
+        <Setter Property="Foreground" Value="#4d4d4d"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="13pt"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Background" Value="#f9f9f9"/>
+        <Setter Property="BorderBrush" Value="#b7d5d3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="13pt"/>
+        <Setter Property="Background" Value="#f9f9f9"/>
+        <Setter Property="Foreground" Value="#4d4d4d"/>
+        <Setter Property="BorderBrush" Value="#b7d5d3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="Height" Value="400"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="10pt"/>
+        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <Setter Property="BorderBrush" Value="#a8d8d5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="RowHeight" Value="62"/>
+        <Setter Property="AlternatingRowBackground" Value="#e6f3f2"/>
+        <Setter Property="GridLinesVisibility" Value="Vertical"/>
+    </Style>
+
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="#e1f7f2"/>
+        <Setter Property="FontFamily" Value="Roboto"/>
+    </Style>    
+
+</ResourceDictionary>

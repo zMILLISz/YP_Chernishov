@@ -1,0 +1,60 @@
+﻿<Page x:Class="YP_Chernishov.Pages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP_Chernishov.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="Страница администратора">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="73*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Name="ButtonUsers" Content="Пользователи" Margin="5" Click="ButtonUsers_Click" Width="135"/>
+            <Button Name="ButtonRequests" Content="Записи" Margin="5" Click="ButtonRequests_Click" Width="135"/>
+        </StackPanel>
+
+        <DataGrid Name="DataGridUser" Grid.Row="1" IsVisibleChanged="DataGrid_IsVisibleChanged" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding UserLogin}" Width="100"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding UserPassword}" Width="100"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role.RoleName}" Width="100"/>
+                <DataGridTextColumn Header="Ф.И.О." Binding="{Binding UserFIO}" Width="150"/>
+                <DataGridTextColumn Header="Фото" Binding="{Binding UserPhoto}" Width="100"/>
+                <DataGridTextColumn Header="Опыт" Binding="{Binding UserExperience}" Width="50"/>
+                <DataGridTextColumn Header="Информация" Binding="{Binding UserInfo}" Width="100"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" ToolTip="Нажмите для редактирования информации о пользователе" Click="ButtonEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Name="DataGridRequest" Grid.Row="1" IsVisibleChanged="DataGrid_IsVisibleChanged" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата приема" Binding="{Binding RequestData}" Width="100"/>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding User.UserFIO}" Width="150"/>
+                <DataGridTextColumn Header="Специалист" Binding="{Binding User1.UserFIO}" Width="150"/>
+                <DataGridTextColumn Header="Причина записи на прием" Binding="{Binding RequestDescription}" Width="200"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" ToolTip="Нажмите для редактирования информации о пользователе" Click="ButtonEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Name="ButtonAdd" Content="Добавить" ToolTip="Нажмите для добавления пользователя" HorizontalAlignment="Left" Click="ButtonAdd_Click" Width="100" Margin="10,5,0,5"/>
+        <Button Grid.Row="2" Name="ButtonDel" Content="Удалить" ToolTip="Нажмите для удаления пользователя" Click="ButtonDel_Click" Margin="0,5,10,5" Height="NaN" HorizontalAlignment="Right" Width="100"/>
+    </Grid>
+</Page>

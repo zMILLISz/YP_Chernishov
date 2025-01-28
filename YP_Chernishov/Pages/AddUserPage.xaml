@@ -1,0 +1,46 @@
+﻿<Page x:Class="YP_Chernishov.Pages.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP_Chernishov.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="Добавление пользователя">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock VerticalAlignment="Center" Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" Text="Роль" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" Text="ФИО" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" Text="Фото (необязательно)" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" x:Name="TB_UserExperience" Text="Опыт работы" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock VerticalAlignment="Center" x:Name="TB_UserInfo" Text="Информация" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
+
+        <TextBox Text="{Binding UserLogin}" Grid.Row="0" Grid.Column="1" ToolTip="Введите свой уникальны логин"/>
+        <TextBox Text="{Binding UserPassword}" Grid.Row="1" Grid.Column="1" ToolTip="Введите свой уникальны пароль"/>
+        <ComboBox Name="cmbRole" ItemsSource="{Binding UserRole}" SelectedValuePath="RoleId" DisplayMemberPath="RoleName" Grid.Row="2" Grid.Column="1" ToolTip="Выберите роль" SelectionChanged="cmbRole_SelectionChanged"/>
+        <TextBox Text="{Binding UserFIO}" Grid.Row="3" Grid.Column="1" ToolTip="Введите ваше ФИО"/>
+        <TextBox Text="{Binding UserPhoto}" Grid.Row="4" Grid.Column="1" ToolTip="Укажите ссылку на фото (необязательно)"/>
+        <TextBox x:Name="TBox_UserExperience" Text="{Binding UserExperience}" Grid.Row="5" Grid.Column="1" ToolTip="Укажите опыт работы"/>
+        <TextBox x:Name="TBox_UserInfo" Text="{Binding UserInfo}" Grid.Row="6" Grid.Column="1" ToolTip="Укажите информация о специальности"/>
+
+        <Button Name="ButtonSave" Content="Сохранить" ToolTip="Нажмите для возврата назад" Grid.Row="7" Click="ButtonSave_Click" Margin="462,8,0,8" HorizontalAlignment="Left" Grid.Column="1" Width="128"/>
+    </Grid>
+</Page>
