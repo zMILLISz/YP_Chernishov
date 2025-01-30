@@ -23,12 +23,16 @@ namespace YP_Chernishov.Pages
     /// </summary>
     public partial class AddRequestPage : Page
     {
+        private RequestService _requestService;
+
         private Request _currentRequests = new Request();
         private int _userId;
         public AddRequestPage(Request selectedRequests, string login)
         {
             InitializeComponent();
-            
+
+            _requestService = new RequestService(selectedRequests);
+
             LoadData();
 
             var user = YP_ChernishovEntities.GetContext().User.FirstOrDefault(u => u.UserLogin == login);
@@ -149,6 +153,18 @@ namespace YP_Chernishov.Pages
                 MessageBox.Show("Вы уже записаны к данному специалисту на этот день.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
+
+            _requestService.SetPatient(selectedPatient?.UserId);
+            _requestService.SetSpecialist(selectedSpecialist?.UserId);
+
+            // Проверка доступности и сохранение
+            if (_requestService.IsDoctorAvailable(selectedSpecialist.UserId, _requestService.CurrentRequest.RequestData))
+            {
+                _requestService.SaveRequest();
+                // Сообщение об успешном сохранении
+            }
+
 
             if (_currentRequests.RequestId == 0)
                 YP_ChernishovEntities.GetContext().Request.Add(_currentRequests);

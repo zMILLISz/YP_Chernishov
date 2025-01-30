@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YP_Chernishov", "YP_Chernishov\YP_Chernishov.csproj", "{03DE1BAE-6427-4BC8-B1B6-BDD63318BF67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YP_Chernishov_Tests", "YP_Chernishov_Tests\YP_Chernishov_Tests.csproj", "{F15B9931-512C-447E-AE22-F043E30BE970}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{03DE1BAE-6427-4BC8-B1B6-BDD63318BF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03DE1BAE-6427-4BC8-B1B6-BDD63318BF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03DE1BAE-6427-4BC8-B1B6-BDD63318BF67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15B9931-512C-447E-AE22-F043E30BE970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15B9931-512C-447E-AE22-F043E30BE970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15B9931-512C-447E-AE22-F043E30BE970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15B9931-512C-447E-AE22-F043E30BE970}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

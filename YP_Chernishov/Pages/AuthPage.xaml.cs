@@ -21,9 +21,12 @@ namespace YP_Chernishov.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        private AuthService _authService;
         public AuthPage()
         {
             InitializeComponent();
+
+            _authService = new AuthService();
         }
 
         private void TextBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
@@ -35,15 +38,6 @@ namespace YP_Chernishov.Pages
             }
         }
 
-        public static string GetHash(string password)
-        {
-            using (var hash = SHA1.Create())
-            {
-                return
-                string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
-            }
-        }
-
         private void EntranceBut_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtHintLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
@@ -52,36 +46,34 @@ namespace YP_Chernishov.Pages
                 return;
             }
 
-            string PassHash = GetHash(PasswordBox.Password);
+            var user = _authService.Login(TextBoxLogin.Text, PasswordBox.Password);
 
-            using (var db = new YP_ChernishovEntities())
+            if (user == null)
             {
-                var user = db.User
-                    .AsNoTracking()
-                    .FirstOrDefault(u => u.UserLogin == TextBoxLogin.Text && u.UserPassword == PassHash);
+                MessageBox.Show("Пользователь с такими данными не найден!");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Пользователь успешно найден!");
 
-                if (user == null)
-                {
-                    MessageBox.Show("Пользователь с такими данными не найден!");
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь успешно найден!");
+                NavigateToUserPage((int)user.UserRole, TextBoxLogin.Text);
+            }
+        }
 
-                    switch (user.UserRole)
-                    {
-                        case 1:
-                            NavigationService.Navigate(new AdminPage(TextBoxLogin.Text));
-                            break;
-                        case 2:
-                            NavigationService.Navigate(new SpecialistPage(TextBoxLogin.Text));
-                            break;
-                        case 3:
-                            NavigationService.Navigate(new UserPage(TextBoxLogin.Text));
-                            break;
-                    }
-                }
+        private void NavigateToUserPage(int userRole, string userLogin)
+        {
+            switch (userRole)
+            {
+                case 1:
+                    NavigationService.Navigate(new AdminPage(userLogin));
+                    break;
+                case 2:
+                    NavigationService.Navigate(new SpecialistPage(userLogin));
+                    break;
+                case 3:
+                    NavigationService.Navigate(new UserPage(userLogin));
+                    break;
             }
         }
 
